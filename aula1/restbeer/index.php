@@ -58,6 +58,17 @@ beer (id INTEGER PRIMARY KEY AUTOINCREMENT, name text not null, style text not n
     return $response->withStatus(201);
 });
 
+$app->put('/beer/{id}', function ($request, $response, $next) use ($db) {
+    $id = $request->getAttribute('id');
+
+    parse_str(file_get_contents("php://input"),$data);
+    $stmt = $db->prepare('update beer set name=:name, style=:style where id=:id');
+    $stmt->bindParam(':name',$data['name']);
+    $stmt->bindParam(':style', $data['style']);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    return $response->withStatus(204);
+});
 
 $app->pipeRoutingMiddleware();
 $app->pipeDispatchMiddleware();
