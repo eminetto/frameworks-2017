@@ -2,6 +2,12 @@
     "require": {
         "zendframework/zend-expressive": "^2.0",
         "zendframework/zend-expressive-fastroute": "^2.1",
-        "zendframework/zend-servicemanager": "^3.3"
+        "zendframework/zend-servicemanager": "^3.3",
+        "zendframework/zend-expressive-twigrenderer": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "RestBeer\\": "src/RestBeer/"
+        }
     }
 }

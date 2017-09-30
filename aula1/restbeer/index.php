@@ -1,7 +1,8 @@
 <?php
 use Zend\Expressive\AppFactory;
 
-require 'vendor/autoload.php';
+$loader = require 'vendor/autoload.php';
+$loader->add('RestBeer', __DIR__.'/src');
 
 $app = AppFactory::create();
 
@@ -17,7 +18,8 @@ $beers = [
 
 $app->get('/brands', function ($request, $response, $next) use ($beers) {
     $response->getBody()->write(implode(',', $beers['brands']));
-    return $response;
+    // return $response;
+    return $next($request, $response);
 });
 
 $app->get('/styles', function ($request, $response, $next) use ($beers) {
@@ -71,5 +73,9 @@ $app->put('/beer/{id}', function ($request, $response, $next) use ($db) {
 });
 
 $app->pipeRoutingMiddleware();
+// $app->pipe(new Coderockr\Middleware\FileUpload());
 $app->pipeDispatchMiddleware();
+$app->pipe(new RestBeer\Format\Json());
+$app->pipe(new RestBeer\Format\Html());
+// $app->pipe(new RestBeer\Format\Xml());
 $app->run();
