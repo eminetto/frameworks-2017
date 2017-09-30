@@ -72,6 +72,7 @@ $app->put('/beer/{id}', function ($request, $response, $next) use ($db) {
     return $response->withStatus(204);
 });
 
+$app->pipe(new RestBeer\Auth());
 $app->pipeRoutingMiddleware();
 // $app->pipe(new Coderockr\Middleware\FileUpload());
 $app->pipeDispatchMiddleware();
