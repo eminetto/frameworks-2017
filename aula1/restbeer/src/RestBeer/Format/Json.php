@@ -11,6 +11,7 @@ class Json implements MiddlewareInterface
 {
     public function __invoke(Request $request, Response $response, callable $out = null)
     {
+        // $content = unserialize($response->getBody());
         $content = explode(',', $response->getBody());
         $header = $request->getHeader('accept');
         $accept = null;

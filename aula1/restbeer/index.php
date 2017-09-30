@@ -17,6 +17,7 @@ $beers = [
 ];
 
 $app->get('/brands', function ($request, $response, $next) use ($beers) {
+    // $response->getBody()->write(serialize($beers['brands']));
     $response->getBody()->write(implode(',', $beers['brands']));
     // return $response;
     return $next($request, $response);
