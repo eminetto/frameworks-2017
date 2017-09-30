@@ -25,6 +25,17 @@ $app->get('/styles', function ($request, $response, $next) use ($beers) {
     return $response;
 });
 
+$app->get('/beer/{id}', function ($request, $response, $next) use ($beers) {
+    $id = $request->getAttribute('id');
+    if (!isset($beers['brands'][$id])) {
+        return $response->withStatus(404);
+    }
+
+    $response->getBody()->write($beers['brands'][$id]);
+
+    return $response;
+});
+
 
 $app->pipeRoutingMiddleware();
 $app->pipeDispatchMiddleware();
