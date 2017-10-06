@@ -12,7 +12,7 @@ class Html implements MiddlewareInterface
 {
     public function __invoke(Request $request, Response $response, callable $out = null)
     {
-        $content = explode(',', $response->getBody());
+        $content = unserialize($response->getBody());
         $header = $request->getHeader('accept');
         $accept = null;
         if (isset($header[0])) {
