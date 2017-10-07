@@ -1,5 +1,4 @@
 .idea
-composer.phar
 
 clover.xml
 coveralls-upload.json
