@@ -15,6 +15,10 @@ return [
         // key is the alias name, the value is the service to which it points.
         'aliases' => [
             'Zend\Expressive\Delegate\DefaultDelegate' => Delegate\NotFoundDelegate::class,
+            'Mysql' => App\Factory\Db\Adapter\Adapter::class,
+            'Postgresql' => App\Factory\Db\Adapter\Adapter::class,
+            'Oracle' => App\Factory\Db\Adapter\Adapter::class,
+            'Sqlite' => App\Factory\Db\Adapter\Adapter::class,
         ],
         // Use 'invokables' for constructor-less services, or services that do
         // not require arguments to the constructor. Map a service name to the
@@ -34,6 +38,13 @@ return [
             Zend\Stratigility\Middleware\ErrorHandler::class => Container\ErrorHandlerFactory::class,
             Middleware\ErrorResponseGenerator::class         => Container\ErrorResponseGeneratorFactory::class,
             Middleware\NotFoundHandler::class                => Container\NotFoundHandlerFactory::class,
+            // 'Sqlite' => App\Factory\Db\Adapter\Adapter::class,
+            App\Factory\Db\Adapter\Adapter::class => App\Factory\Db\Adapter\Adapter::class,
+            App\Action\HomePageAction::class => App\Action\HomePageFactory::class,
+            App\Action\Beer\Index::class => App\Factory\Beer\ActionFactory::class,
+            App\Action\Beer\Update::class => App\Factory\Beer\ActionFactory::class,
+            App\Action\Beer\Create::class => App\Factory\Beer\ActionFactory::class,
+            App\Action\Beer\Delete::class => App\Factory\Beer\ActionFactory::class,
         ],
     ],
 ];
