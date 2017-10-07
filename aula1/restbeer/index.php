@@ -11,6 +11,7 @@ $app->get('/', function ($request, $response, $next) {
     return $response;
 });
 
+
 $beers = [
     'brands' => ['Heineken', 'Guinness', 'Skol', 'Colorado'],
     'styles' => ['Pilsen' , 'Stout']
@@ -40,6 +41,9 @@ $app->get('/beer/{id}', function ($request, $response, $next) use ($beers) {
 });
 
 $db = new PDO('sqlite:beers.db');
+
+$app->get('/teste', new RestBeer\Middleware\Get($db));
+
 $app->post('/beer', function ($request, $response, $next) use ($db) {
     $db->exec(
         "create table if not exists 
