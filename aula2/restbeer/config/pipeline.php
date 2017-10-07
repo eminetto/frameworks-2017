@@ -49,6 +49,9 @@ $app->pipe(UrlHelperMiddleware::class);
 // Register the dispatch middleware in the middleware pipeline
 $app->pipeDispatchMiddleware();
 
+$app->pipe(App\Middleware\Format\Json::class);
+$app->pipe(App\Middleware\Format\Html::class);
+
 // At this point, if no Response is return by any middleware, the
 // NotFoundHandler kicks in; alternately, you can provide other fallback
 // middleware to execute.

@@ -48,5 +48,6 @@ class HomePageActionTest extends TestCase
         );
 
         $this->assertInstanceOf(HtmlResponse::class, $response);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 }
