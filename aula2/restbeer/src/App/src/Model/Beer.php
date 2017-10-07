@@ -72,6 +72,14 @@ class Beer
                 ['name' => 'StripTags'],
                 ['name' => 'StringTrim'],
             ],
+            // 'validators' => [
+            //     [
+            //         'name'    => 'Uri',
+            //         'options' => [
+            //             'allowAbsolute' => false,
+            //         ],
+            //     ],
+            // ],
         ]);
 
         return $inputFilter;

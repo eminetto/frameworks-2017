@@ -34,6 +34,7 @@ $app->pipe(ServerUrlMiddleware::class);
 // - $app->pipe('/files', $filesMiddleware);
 
 // Register the routing middleware in the middleware pipeline
+$app->pipe(App\Middleware\Validate::class);
 $app->pipeRoutingMiddleware();
 $app->pipe(ImplicitHeadMiddleware::class);
 $app->pipe(ImplicitOptionsMiddleware::class);

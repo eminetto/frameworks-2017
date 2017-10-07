@@ -27,6 +27,8 @@ return [
             // Fully\Qualified\InterfaceName::class => Fully\Qualified\ClassName::class,
             Helper\ServerUrlHelper::class => Helper\ServerUrlHelper::class,
             App\Middleware\Format\Json::class => App\Middleware\Format\Json::class,
+            App\Middleware\Auth::class => App\Middleware\Auth::class,
+            App\Middleware\Validate::class => App\Middleware\Validate::class,
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories'  => [

@@ -18,7 +18,6 @@ class Create implements MiddlewareInterface
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         $data = $request->getParsedBody();
-
         $this->tableGateway->insert($data);
 
         return $delegate->process(
