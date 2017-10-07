@@ -29,7 +29,7 @@ class Update implements MiddlewareInterface
         $this->tableGateway->update($data, ['id' => $id]);
 
         return $delegate->process(
-            $request->withParsedBody(['id' => id])
+            $request->withParsedBody(['id' => $id])
         );
     }
 }
