@@ -17,7 +17,7 @@ return [
     'Zend\Mvc\Plugin\Identity',
     'Zend\Mvc\Plugin\FlashMessenger',
     'Zend\Mvc\Plugin\FilePrg',
-    'Zend\Mvc\I18n',
+//    'Zend\Mvc\I18n',
     'Zend\Mvc\Console',
     'Zend\Log',
     'Zend\Form',

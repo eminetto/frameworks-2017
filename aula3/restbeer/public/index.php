@@ -19,7 +19,7 @@ if (php_sapi_name() === 'cli-server') {
 }
 
 // Composer autoloading
-include __DIR__ . '/../vendor/autoload.php';
+include __DIR__ . './../vendor/autoload.php';
 
 if (! class_exists(Application::class)) {
     throw new RuntimeException(
