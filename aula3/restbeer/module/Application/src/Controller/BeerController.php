@@ -7,15 +7,29 @@ use Zend\View\Model\ViewModel;
 class BeerController extends AbstractActionController
 {
     public $tableGateway;
+    public $cache;
 
-    public function __construct($tableGateway)
+    public function __construct($tableGateway, $cache)
     {
         $this->tableGateway = $tableGateway;
+        $this->cache = $cache;
     }
 
     public function indexAction()
     {
-        $beers = $this->tableGateway->select()->toArray();
+        // $beers = $this->tableGateway->select()->toArray();
+
+        // return new ViewModel(['beers' => $beers]);
+
+        $key    = 'beers';
+        // if ($this->cache->hasItem($key)) {
+        //     $beers = $this->cache->getItem($key);
+        // }
+        $beers = $this->cache->getItem($key, $success);
+        if (! $success) {
+            $beers = $this->tableGateway->select()->toArray();
+            $this->cache->setItem($key, $beers);
+        }
 
         return new ViewModel(['beers' => $beers]);
     }
@@ -31,6 +45,7 @@ class BeerController extends AbstractActionController
         }
 
         $this->tableGateway->delete(['id' => $id]);
+        $this->cache->removeItem('beers');
         return $this->redirect()->toUrl('/beer');
     }
 
@@ -53,6 +68,7 @@ class BeerController extends AbstractActionController
                 unset($data['send']);
                 /* salva a cerveja*/
                 $this->tableGateway->insert($data);
+                $this->cache->removeItem('beers');
                 /* redireciona para a página inicial que mostra todas as cervejas*/
                 return $this->redirect()->toUrl('/beer');
             }
@@ -93,6 +109,7 @@ class BeerController extends AbstractActionController
             unset($data['send']);
             /* salva a cerveja*/
             $this->tableGateway->update($data, 'id = '.$data['id']);
+            $this->cache->removeItem('beers');
             /* redireciona para a página inicial que mostra todas as cervejas*/
             // return $this->redirect()->toUrl('/beer');
             return $this->redirect()->toRoute('beer');
