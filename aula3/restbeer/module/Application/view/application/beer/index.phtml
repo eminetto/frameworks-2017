@@ -1,4 +1,4 @@
-<a href="/beer/create">New Beer</a>
+<a href="<?php echo $this->url('beer', ['action' => 'create']);?>">New Beer</a>
 
 <table class="table table-striped">
   <thead>
@@ -18,8 +18,11 @@
         <td><?php echo $beer['name'];?></td>
         <td><?php echo $beer['style'];?></td>
         <td><img src="<?php echo $beer['img'];?>"></td>
-        <td><a href="/beer/edit/<?php echo $beer['id'];?>">Edit</a></td>
-        <td><a href="/beer/delete/<?php echo $beer['id'];?>">Delete</a></td>
+
+        <!-- <td><a href="/beer/edit/<?php echo $beer['id'];?>">Edit</a></td> -->
+        <td><a href="<?php echo $this->url('beer', ['action' => 'edit' , 'id' => $beer['id']]);?>">Edit</a></td>
+        <!-- <td><a href="/beer/delete/<?php echo $beer['id'];?>">Delete</a></td> -->
+        <td><a href="<?php echo $this->url('beer', ['action' => 'delete' , 'id' => $beer['id']]);?>">Delete</a></td>
       </tr>
     <?php endforeach; ?>
   </tbody>
