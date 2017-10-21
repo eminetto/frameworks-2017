@@ -11,16 +11,11 @@ class Json implements MiddlewareInterface
 {
     public function __invoke(Request $request, Response $response, callable $out = null)
     {
-        // $content = unserialize($response->getBody());
-        $content = explode(',', $response->getBody());
+        $content = unserialize($response->getBody());
         $header = $request->getHeader('accept');
         $accept = null;
-        if (isset($header[0])) {
-            $accept = $header[0];
-        }
-        if ($accept != 'application/json' ) {
-            return $out($request, $response);
-        }
+        if (isset($header[0])) { $accept = $header[0];}
+        if ($accept != 'application/json' ) { return $out($request, $response);}
         return new JsonResponse($content, $response->getStatusCode());
     }
 }

@@ -1,5 +1,8 @@
 <?php
+
 use Zend\Expressive\AppFactory;
+
+require './src/routes.php';
 
 $loader = require 'vendor/autoload.php';
 $loader->add('RestBeer', __DIR__.'/src');
@@ -79,9 +82,7 @@ $app->put('/beer/{id}', function ($request, $response, $next) use ($db) {
 
 $app->pipe(new RestBeer\Auth());
 $app->pipeRoutingMiddleware();
-// $app->pipe(new Coderockr\Middleware\FileUpload());
 $app->pipeDispatchMiddleware();
 $app->pipe(new RestBeer\Format\Json());
 $app->pipe(new RestBeer\Format\Html());
-// $app->pipe(new RestBeer\Format\Xml());
 $app->run();
