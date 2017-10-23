@@ -19,19 +19,12 @@
         "zendframework/zend-cache": "^2.7.1",
         "zendframework/zend-db": "^2.8.1",
         "zendframework/zend-mvc-form": "^1.0",
-        "zendframework/zend-json": "^3.0",
-        "zendframework/zend-log": "^2.9",
-        "zendframework/zend-mvc-console": "^1.1.10",
-        "zendframework/zend-mvc-i18n": "^1.0",
-        "zendframework/zend-mvc-plugins": "^1.0.1",
-        "zendframework/zend-psr7bridge": "^0.2.2",
-        "zendframework/zend-session": "^2.7.1",
-        "zendframework/zend-servicemanager-di": "^1.0",
-        "zendframework/zend-serializer": "^2.8"
+        "zendframework/zend-session": "^2.7.1"
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "module/Application/src/"
+            "Application\\": "module/Application/src/",
+            "Login\\": "module/Login/src/"
         }
     },
     "autoload-dev": {
@@ -49,11 +42,10 @@
         "post-create-project-cmd": [
             "@development-enable"
         ],
-        "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "serve": "php -S 0.0.0.0:8080 -t public/ public/index.php",
         "test": "phpunit"
     },
     "require-dev": {
-        "zendframework/zend-developer-tools": "^1.1.0",
-        "zendframework/zend-test": "^3.0.1"
+        "zendframework/zend-developer-tools": "^1.1.0"
     }
 }
