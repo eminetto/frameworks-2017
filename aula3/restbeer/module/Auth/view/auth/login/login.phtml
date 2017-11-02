@@ -1,0 +1,20 @@
+<div class="container">
+    <?php
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    ?>
+
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+       <?php echo $this->formEmail($form->get('email')); ?>
+        <label for="inputPassword" class="sr-only">Password</label>
+       <?php echo $this->formPassword($form->get('password')); ?>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+    <?php echo $this->form()->closeTag(); ?>
+</div> <!-- /container -->

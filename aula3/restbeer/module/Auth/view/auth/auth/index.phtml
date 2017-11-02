@@ -1,0 +1,15 @@
+<table class="table">
+    <tr><th colspan="6"><a class="btn btn-primary" href="<?=$this->url('auth',['action'=>'create']);?>">CREATE</a></th> </tr>
+ <?php
+foreach ($users as $user):?>
+<?php extract($user->toArray());?>
+    <tr>
+        <td><?=$id;?></td>
+        <td><?=$name;?></td>
+        <td><?=$email;?></td>
+        <td><?=$created;?></td>
+        <td><a class="btn btn-success" href="<?=$this->url('auth',['action'=>'update','id'=>$id]);?>">EDITAR</a> </td>
+        <td><a class="btn btn-danger" href="<?=$this->url('auth',['action'=>'delete','id'=>$id]);?>">EXCLUIR</a> </td>
+    </tr>
+<?php endforeach;?>
+</table>

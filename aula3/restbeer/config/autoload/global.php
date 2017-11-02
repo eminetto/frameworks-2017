@@ -22,4 +22,7 @@ return [
         'driver' => 'Pdo_Sqlite',
         'database' => 'data/beers.db',
     ],
+    'module_layouts' => [
+        'actionlogin' => 'Auth/layout',
+    ],
 ];
